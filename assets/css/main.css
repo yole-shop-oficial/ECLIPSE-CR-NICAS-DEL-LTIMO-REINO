@@ -1,0 +1,120 @@
+/* ECLIPSE — Dark Fantasy Premium (FASE 1: shell de arranque).
+   Materiales: obsidiana, oro antiguo, piedra. Sin emojis; glifos geométricos. */
+
+:root {
+  --ink: #0b0a10;
+  --ink-2: #141320;
+  --stone: #5b574e;
+  --gold: #d4af37;
+  --gold-dim: #8a6d1f;
+  --silver: #9aa2ae;
+  --text: #cfc9b8;
+  --ok: #d4af37;
+  --fail: #a33327;
+  --font-display: Georgia, 'Times New Roman', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #1d1a2b 0%, transparent 60%),
+    radial-gradient(90% 60% at 50% 115%, #16121f 0%, transparent 55%),
+    var(--ink);
+  color: var(--text);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app { min-height: 100%; display: flex; flex-direction: column; }
+
+.boot {
+  width: min(92%, 560px);
+  margin: clamp(16px, 4vh, 48px) auto;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(20, 19, 32, 0.92), rgba(11, 10, 16, 0.96));
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(0, 0, 0, 0.5);
+  padding: clamp(18px, 4vw, 34px);
+}
+
+.boot-header { text-align: center; margin-bottom: 22px; }
+
+.boot-title {
+  font-size: clamp(34px, 9vw, 56px);
+  letter-spacing: 0.32em;
+  color: #f1e6c0;
+  text-shadow: 0 0 18px rgba(212, 175, 55, 0.35), 0 2px 0 #000;
+}
+
+.boot-subtitle {
+  margin-top: 8px;
+  font-size: clamp(10px, 2.6vw, 13px);
+  letter-spacing: 0.38em;
+  color: var(--silver);
+}
+
+.boot-version { margin-top: 6px; font-size: 12px; color: var(--gold-dim); letter-spacing: 0.12em; }
+
+.boot-section-title {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  padding-bottom: 6px;
+  margin: 20px 0 10px;
+}
+
+.check {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 4px;
+  border-bottom: 1px dashed rgba(154, 162, 174, 0.14);
+  font-size: 14px;
+}
+
+.check-mark { width: 16px; text-align: center; }
+.check-ok .check-mark { color: var(--ok); text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+.check-fail .check-mark { color: var(--fail); }
+.check-label { color: #e8e2d0; }
+.check-detail { margin-left: auto; font-size: 12px; color: var(--silver); }
+
+.rank-strip { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.rank-chip {
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 4px 7px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.boot-next-text { font-size: 13px; line-height: 1.6; color: var(--text); }
+
+.boot-log {
+  margin-top: 14px;
+  max-height: 120px;
+  overflow: auto;
+  border-top: 1px solid rgba(154, 162, 174, 0.14);
+  padding-top: 8px;
+  font-size: 11px;
+  color: #7d7a6e;
+}
+
+.log-warn { color: #c9a24a; }
+.log-error { color: #c05a4a; }
+
+.boot-footer { margin-top: 18px; text-align: center; font-size: 10px; letter-spacing: 0.22em; color: #6b675c; }
+
+.boot-fatal {
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid var(--fail);
+  color: #e8b7ad;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
