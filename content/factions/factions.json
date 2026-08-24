@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "factions": [
+    { "id": "fact/ash-empire",     "name": "El Imperio de Ceniza",        "palette": ["#C0562D", "#3A3230"], "heraldry": "espiral de ascuas",      "philosophy": "El orden se hereda; la ceniza recuerda al legítimo." },
+    { "id": "fact/eclipse-church", "name": "La Iglesia del Eclipse",      "palette": ["#8C8696", "#232030"], "heraldry": "corona menguante",       "philosophy": "El eclipse fue una misericordia; no se reza, se agradece." },
+    { "id": "fact/void-sons",      "name": "Los Hijos del Vacío",         "palette": ["#5E3FA3", "#120F1A"], "heraldry": "círculo que se traga",   "philosophy": "Lo profundo es la única verdad que no miente." },
+    { "id": "fact/crystal-realm",  "name": "El Reino de Cristal",         "palette": ["#C9D4E8", "#2A2D3A"], "heraldry": "prisma bajo la marea",   "philosophy": "La belleza debe sobrevivir, aunque sea bajo el mar." },
+    { "id": "fact/root-keepers",   "name": "Los Guardianes de la Raíz",   "palette": ["#3E5A3A", "#23201A"], "heraldry": "raíz coronada",          "philosophy": "El bosque decide; nosotros escoltamos su decisión." },
+    { "id": "fact/blood-lords",    "name": "Los Señores de la Sangre",    "palette": ["#7E1E2B", "#2A1414"], "heraldry": "gota en la corona",      "philosophy": "Todo poder tiene precio; mejor conocerlo." },
+    { "id": "fact/last-light",     "name": "La Orden de la Última Luz",   "palette": ["#D9D2C5", "#3A3324"], "heraldry": "campana con filo",       "philosophy": "Mientras un juramento respire, el mundo no ha acabado." },
+    { "id": "fact/errants",        "name": "Los Errantes",                "palette": ["#8A7D67", "#1A1812"], "heraldry": "nudo de caminos",        "philosophy": "No pertenecer es la única forma de ser libre bajo el eclipse." },
+    { "id": "fact/silent-court",   "name": "La Corte Silente",            "palette": ["#D9D2C5", "#16141D"], "heraldry": "corona de hueso",        "philosophy": "La muerte es un umbral con aduana." }
+  ]
+}

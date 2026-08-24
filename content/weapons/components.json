@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "types": [
+    { "id": "sword",     "name": "Espada",      "gender": "f", "atk": 3, "weight": 3 },
+    { "id": "greatsword","name": "Mandoble",    "gender": "m", "atk": 4, "weight": 5 },
+    { "id": "spear",     "name": "Lanza",       "gender": "f", "atk": 3, "weight": 3 },
+    { "id": "bow",       "name": "Arco",        "gender": "m", "atk": 3, "weight": 2 },
+    { "id": "scythe",    "name": "Guadaña",     "gender": "f", "atk": 4, "weight": 4 },
+    { "id": "staff",     "name": "Bastón",      "gender": "m", "atk": 2, "weight": 2 },
+    { "id": "warhammer", "name": "Martillo",    "gender": "m", "atk": 4, "weight": 5 },
+    { "id": "dagger",    "name": "Daga",        "gender": "f", "atk": 2, "weight": 1 },
+    { "id": "rapier",    "name": "Estoque",     "gender": "m", "atk": 3, "weight": 2 },
+    { "id": "axe",       "name": "Hacha",       "gender": "f", "atk": 4, "weight": 4 },
+    { "id": "claw",      "name": "Garra",       "gender": "f", "atk": 3, "weight": 2 },
+    { "id": "scepter",   "name": "Cetro",       "gender": "m", "atk": 2, "weight": 3 },
+    { "id": "grimoire",  "name": "Grimorio",    "gender": "m", "atk": 2, "weight": 2 },
+    { "id": "catalyst",  "name": "Catalizador", "gender": "m", "atk": 2, "weight": 1 },
+    { "id": "shield",    "name": "Escudo",      "gender": "m", "atk": 1, "weight": 4 },
+    { "id": "relic",     "name": "Reliquia",    "gender": "f", "atk": 1, "weight": 1 }
+  ],
+  "materials": [
+    { "id": "obsidian",        "name": "Obsidiana",           "tier": 2, "palette": ["#16141D", "#3A2E58"] },
+    { "id": "dragon-bone",     "name": "Hueso de dragón",     "tier": 3, "palette": ["#D9D2C5", "#8A7D67"] },
+    { "id": "blackened-silver","name": "Plata ennegrecida",   "tier": 2, "palette": ["#8D93A6", "#2C2E38"] },
+    { "id": "kingdom-crystal", "name": "Cristal del Reino",   "tier": 3, "palette": ["#C9D4E8", "#5E7FA3"] },
+    { "id": "ash-steel",       "name": "Acero de ceniza",     "tier": 1, "palette": ["#4E5158", "#232030"] },
+    { "id": "root-wood",       "name": "Madera de raíz",      "tier": 1, "palette": ["#6B5136", "#3E5A3A"] },
+    { "id": "basalt",          "name": "Basalto imposible",   "tier": 3, "palette": ["#1D1A24", "#D4A03F"] },
+    { "id": "old-gold",        "name": "Oro antiguo",         "tier": 2, "palette": ["#B08D3F", "#5C4426"] }
+  ],
+  "cores": [
+    { "id": "lunar",  "epithet": "de la Luna",   "affinity": "moon",  "glow": "#A9AEC1" },
+    { "id": "solar",  "epithet": "del Sol",      "affinity": "flame", "glow": "#C0562D" },
+    { "id": "hollow", "epithet": "del Hueco",    "affinity": "void",  "glow": "#5E3FA3" },
+    { "id": "root",   "epithet": "de la Raíz",   "affinity": "root",  "glow": "#3E5A3A" },
+    { "id": "ember",  "epithet": "de la Brasa",  "affinity": "ash",   "glow": "#C0562D" },
+    { "id": "echo",   "epithet": "del Eco",      "affinity": "echo",  "glow": "#8FB7C4" },
+    { "id": "tide",   "epithet": "de la Marea",  "affinity": "abyss", "glow": "#3F6FA3" },
+    { "id": "vow",    "epithet": "del Voto",     "affinity": "vow",   "glow": "#D9D2C5" }
+  ],
+  "runes": [
+    { "id": "void",    "epithet": { "f": "Vacía",        "m": "Vacío" },        "effect": "erode" },
+    { "id": "doom",    "epithet": { "f": "Condenada",    "m": "Condenado" },    "effect": "bleed" },
+    { "id": "tribute", "epithet": { "f": "del Tributo",  "m": "del Tributo" },  "effect": "drain" },
+    { "id": "vigil",   "epithet": { "f": "de la Vigilia","m": "de la Vigilia" },"effect": "ward" },
+    { "id": "silence", "epithet": { "f": "Silente",      "m": "Silente" },      "effect": "hush" },
+    { "id": "thorn",   "epithet": { "f": "de la Espina", "m": "de la Espina" }, "effect": "venom" },
+    { "id": "ash",     "epithet": { "f": "de la Ceniza", "m": "de la Ceniza" }, "effect": "burn" },
+    { "id": "crown",   "epithet": { "f": "Coronada",     "m": "Coronado" },     "effect": "rally" }
+  ],
+  "effects": [
+    { "id": "bleed", "name": "Sangrado",       "tick": 2 },
+    { "id": "burn",  "name": "Quemadura",      "tick": 2 },
+    { "id": "chill", "name": "Escarcha",       "tick": 1 },
+    { "id": "erode", "name": "Erosión",        "tick": 2 },
+    { "id": "hush",  "name": "Silenciamiento", "tick": 1 },
+    { "id": "venom", "name": "Ponzoña",        "tick": 2 },
+    { "id": "drain", "name": "Drenaje",        "tick": 1 },
+    { "id": "ward",  "name": "Custodia",       "tick": 0 },
+    { "id": "rally", "name": "Arenga",         "tick": 0 }
+  ]
+}

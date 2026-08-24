@@ -1,0 +1,94 @@
+/* codex.css — Pantallas y componentes del flujo M1. */
+
+/* ——— Splash ——— */
+.splash {
+  min-height: 100dvh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24px;
+  cursor: pointer; position: relative; overflow: hidden;
+}
+.splash__bg {
+  position: absolute; inset: 0;
+  background: url('../assets/brand/prologue-bg.jpg') center/cover no-repeat;
+  filter: brightness(.32) saturate(.8);
+  mask-image: radial-gradient(ellipse at 50% 42%, #000 30%, transparent 78%);
+}
+.splash__sigil { position: relative; width: 108px; margin-bottom: 18px; filter: drop-shadow(0 0 22px rgba(201, 212, 232, .35)); }
+.splash__title { position: relative; font-size: clamp(2.6rem, 11vw, 4.6rem); letter-spacing: .42em; margin-left: .42em; color: var(--corona); }
+.splash__subtitle { position: relative; margin-top: 10px; letter-spacing: .3em; font-size: .82rem; color: var(--bone); }
+.splash__codex { position: relative; margin-top: 26px; font-size: .72rem; letter-spacing: .3em; color: var(--old-gold); }
+.splash__hint { position: relative; margin-top: 64px; color: var(--ash); font-size: .85rem; animation: bootpulse 2.2s ease-in-out infinite; }
+
+/* ——— Prólogo ——— */
+.prologue { min-height: 100dvh; position: relative; display: grid; align-items: end; }
+.prologue__bg { position: absolute; inset: 0; background-size: cover; background-position: center; animation: slowzoom 26s linear forwards; }
+@keyframes slowzoom { to { transform: scale(1.08); } }
+.prologue__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,10,16,.25) 30%, rgba(11,10,16,.92) 82%); }
+.prologue__line {
+  position: relative; z-index: 1;
+  padding: 0 28px calc(96px + var(--sab));
+  font-size: clamp(1.05rem, 3.6vw, 1.35rem);
+  font-style: italic; line-height: 1.6;
+  color: var(--bone); min-height: 4.8em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .8);
+}
+.prologue__skip { position: absolute; top: calc(14px + var(--sat)); right: 16px; z-index: 2; }
+
+/* ——— Elección de Portador ——— */
+.choose { padding: calc(20px + var(--sat)) 16px 40px; max-width: 1220px; margin: 0 auto; }
+.choose__head { text-align: center; margin-bottom: 20px; }
+.choose__head p { max-width: 56ch; margin: 10px auto 0; }
+.choose__grid {
+  display: grid; gap: 14px; justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(min(46vw, 300px), max-content));
+}
+.choose--sealed .choose__grid { filter: brightness(.4) saturate(.4); transition: filter .45s var(--ease-seal); }
+
+/* ——— Carta en DOM ——— */
+.card-shell {
+  position: relative; width: var(--card-w); border-radius: 14px;
+  transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform .18s var(--ease-seal), box-shadow .18s var(--ease-seal);
+}
+.card-shell.is-selectable:hover, .card-shell.is-selectable:focus-visible {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .6), 0 0 0 1px rgba(201, 212, 232, .25);
+  z-index: 2;
+}
+.card-canvas { display: block; width: 100%; height: auto; border-radius: 14px; }
+.card-sheen {
+  position: absolute; inset: 0; border-radius: 14px; pointer-events: none;
+  background: radial-gradient(220px circle at var(--sheen-x, 50%) 20%, rgba(255,255,255,.10), transparent 60%);
+  opacity: 0; transition: opacity .18s var(--ease-seal);
+}
+.card-shell:hover .card-sheen { opacity: 1; }
+
+/* ——— Modal ——— */
+.modal { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 16px; }
+.modal__scrim { position: absolute; inset: 0; background: rgba(5, 4, 8, .78); }
+.modal__panel {
+  position: relative; max-width: 420px; width: 100%; text-align: center;
+  display: grid; gap: 8px; justify-items: center;
+  max-height: calc(100dvh - 48px); overflow-y: auto;
+}
+.modal__name { margin-top: 4px; }
+.modal__title { color: var(--ash); font-style: italic; }
+.modal__arc { font-size: .92rem; line-height: 1.5; }
+.modal__meta { font-size: .8rem; color: var(--old-gold); }
+.modal__actions { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
+
+/* ——— Santuario ——— */
+.sanctum { padding: calc(20px + var(--sat)) 16px 40px; max-width: 1080px; margin: 0 auto; display: grid; gap: 16px; }
+.sanctum__head { text-align: center; }
+.sanctum__body { display: grid; gap: 16px; justify-content: center; }
+@media (min-width: 860px) { .sanctum__body { grid-template-columns: auto 1fr; align-items: start; } }
+.sanctum__card { display: grid; place-items: center; }
+.sanctum__facts { display: grid; gap: 8px; margin: 12px 0; }
+.sanctum__facts div { display: grid; grid-template-columns: 110px 1fr; gap: 8px; }
+.sanctum__facts dt { color: var(--ash); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; }
+.sanctum__facts dd { font-size: .95rem; }
+.sanctum__echo { color: var(--ash); font-size: .85rem; font-style: italic; }
+.sanctum__actions { display: grid; gap: 10px; margin-top: 14px; }
+.sanctum__forge ul { list-style: none; margin-top: 10px; display: grid; gap: 8px; }
+.forge__list li { display: grid; }
+.forge__list strong { color: var(--corona); font-weight: 600; }
