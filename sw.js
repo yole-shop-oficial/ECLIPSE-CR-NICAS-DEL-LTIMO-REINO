@@ -1,5 +1,5 @@
 // sw.js — Service Worker: app-shell cache-first. OFFLINE FIRST (Mega §35).
-const VERSION = 'eclipse-v0.1.1';
+const VERSION = 'eclipse-v0.1.3';
 
 const SHELL = [
   'index.html',
