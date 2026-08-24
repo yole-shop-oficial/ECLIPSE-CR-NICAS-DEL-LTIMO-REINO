@@ -74,6 +74,10 @@ async function boot() {
   if (platform.isBrowser) await kernel.get('offline').init('sw.js');
 
   const ui = kernel.get('ui');
+  ui.register('splash', (p) => splashScreen(p));
+  ui.register('prologue', (p) => prologueScreen(p));
+  ui.register('choose', (p) => chooseScreen(p));
+  ui.register('sanctum', (p) => sanctumScreen(p));
   const ranks = kernel.get('ranks');
   const composer = kernel.get('composer');
   const weapons = kernel.get('weapons');
