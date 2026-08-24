@@ -21,6 +21,20 @@ import { prologueScreen } from './ui/screens/prologue.js';
 import { chooseScreen } from './ui/screens/choose.js';
 import { sanctumScreen } from './ui/screens/sanctum.js';
 
+// Códice volátil: misma API que CodexDB, en memoria (degradación elegante).
+function createMemoryDB() {
+  const stores = new Map();
+  const of = (name) => stores.get(name) ?? stores.set(name, new Map()).get(name);
+  return {
+    get: (s, id) => Promise.resolve(of(s).get(id)),
+    getAll: (s) => Promise.resolve([...of(s).values()]),
+    put: (s, v) => { of(s).set(v.id, v); return Promise.resolve(v); },
+    delete: (s, id) => { of(s).delete(id); return Promise.resolve(); },
+    clear: (s) => { of(s).clear(); return Promise.resolve(); },
+    atomic: async (writes) => { for (const w of writes) of(w.store).set(w.value.id, w.value); },
+  };
+}
+
 async function boot() {
   const kernel = new Kernel();
   const events = new EventBus();
@@ -45,12 +59,18 @@ async function boot() {
   kernel.register('offline', () => new OfflineEngine(events));
   kernel.register('ui', () => new UIEngine(document.getElementById('app')));
 
-  // Instanciación manual ordenada (los async no pasan por kernel.start en M1)
-  const registry = await kernel.get('registry');       // ContentRegistry.loadAll()
-  kernel._instances.set('registry', registry);
-  const db = await kernel.get('db');
-  const save = await kernel.get('save'); await save.init();
-  await kernel.get('vault').init().catch(() => {});    // cifrado opcional en v1
+  // Instanciación manual ordenada: ready() espera factorías async y re-hidrata
+  // el caché del kernel para que las dependencias reciban instancias, no promesas.
+  const registry = await kernel.ready('registry');     // ContentRegistry.loadAll()
+  try {
+    await kernel.ready('db');                          // CodexDB.open()
+  } catch (err) {
+    // IndexedDB bloqueado (modo privado / iframe restringido): Códice volátil.
+    console.warn('[eclipse] IndexedDB no disponible; progreso solo en memoria:', err.message);
+    kernel.set('db', createMemoryDB());
+  }
+  const save = await kernel.ready('save'); await save.init();
+  await kernel.ready('vault').then(v => v.init()).catch(() => {}); // cifrado opcional
   if (platform.isBrowser) await kernel.get('offline').init('sw.js');
 
   const ui = kernel.get('ui');

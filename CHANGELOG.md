@@ -3,6 +3,17 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) · SemVer.
 Este archivo registra también **decisiones de diseño/arquitectura**, no solo código.
 
+## [0.1.1] — 2026-08-24 — Corrección de arranque (hotfix)
+
+### Corregido
+- `Kernel`: las factorías async cacheaban la promesa; `SaveEngine`/`SecurityVault`
+  recibían una Promise en vez de la instancia (`this._db.delete is not a function`
+  en arranque). Nuevas APIs `kernel.set()` y `kernel.ready()`; `main.js` re-hidrata
+  el caché para `registry` y `db` antes de resolver dependientes.
+- Resiliencia: si IndexedDB está bloqueado (modo privado / iframe restringido), el
+  Códice arranca con almacenamiento volátil en memoria y aviso, en lugar de morir.
+- Service Worker: bump `eclipse-v0.1.1` para invalidar caché con los módulos nuevos.
+
 ## [0.1.0] — 2026-08-24 — «El Códice despierta» (M0+M1)
 
 ### Añadido — Documentación

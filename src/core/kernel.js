@@ -25,6 +25,16 @@ export class Kernel {
     return instance;
   }
 
+  /** Sustituye la instancia cacheada (p. ej. tras esperar una factoría async). */
+  set(name, instance) { this._instances.set(name, instance); return this; }
+
+  /** Atajo: espera si la instancia cacheada es una promesa y la re-hidrata. */
+  async ready(name) {
+    const inst = await this.get(name);
+    if (inst !== this._instances.get(name)) this._instances.set(name, inst);
+    return inst;
+  }
+
   has(name) { return this._factories.has(name); }
 
   async start() {
