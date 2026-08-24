@@ -3,6 +3,13 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) · SemVer.
 Este archivo registra también **decisiones de diseño/arquitectura**, no solo código.
 
+## [0.1.2] — 2026-08-24 — Despliegue estático
+
+### Añadido
+- `vercel.json`: sitio estático sin build, cabeceras de caché correctas
+  (`sw.js`/`index.html`/`src` no-cache, `assets` immutable, mime del manifest,
+  `Service-Worker-Allowed`). Nota de despliegue en README.
+
 ## [0.1.1] — 2026-08-24 — Corrección de arranque (hotfix)
 
 ### Corregido

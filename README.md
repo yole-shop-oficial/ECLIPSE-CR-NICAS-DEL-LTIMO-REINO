@@ -31,6 +31,14 @@ Abrir `http://localhost:8000`. En Android: servir en la red local e instalar com
 PWA (menú del navegador → «Añadir a pantalla de inicio»). El Service Worker deja el
 juego 100 % jugable offline tras la primera visita.
 
+## Despliegue (Vercel / estático)
+
+El juego es un sitio estático desde la raíz: **no necesita build**. En Vercel:
+Framework **«Other»**, Build Command *vacío*, Output Directory `/` (raíz).
+`vercel.json` ya lo fija (cabeceras correctas para `sw.js`, `manifest.webmanifest`
+y cachés). Solo hay que asegurarse de desplegar la rama con el juego (la rama de
+desarrollo o `main` tras mergear el PR), nunca una rama que solo tenga el Mega Prompt.
+
 ## Estructura
 
 ```
