@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "scenes": [
+    {
+      "id": "scn/prologue",
+      "background": "assets/brand/prologue-bg.jpg",
+      "lines": [
+        "Eryndor se apaga bajo la Corona Pálida.",
+        "Hace siglos, doce entidades protegían este mundo.",
+        "Durante la guerra que no se podía ganar, fueron convertidas en cartas.",
+        "No murieron. Fueron selladas. Sus nombres, borrados de la historia.",
+        "Hoy, el Códice Eterno ha llegado a tus manos.",
+        "Doce cartas respiran en su interior.",
+        "Solo una responderá a tu mano.",
+        "Elige, Cronista. El mundo no volverá a ofrecerse dos veces."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "ranks": [
+    { "id": "G",    "order": 0,  "family": "sealed",   "frame": { "material": "parchment", "base": "#4A4238", "trim": "#8A7D67", "accent": "#6E6656", "ornament": 0, "runes": false, "glow": 0, "particles": 0, "gem": "disc" },   "seal": "seal/sealed" },
+    { "id": "F",    "order": 1,  "family": "sealed",   "frame": { "material": "leather",   "base": "#4A4238", "trim": "#7D5A3C", "accent": "#6E6656", "ornament": 1, "runes": false, "glow": 0, "particles": 0, "gem": "disc" },   "seal": "seal/sealed" },
+    { "id": "C",    "order": 2,  "family": "sealed",   "frame": { "material": "woodiron",  "base": "#3D332A", "trim": "#585A5E", "accent": "#8C8696", "ornament": 1, "runes": false, "glow": 0, "particles": 0, "gem": "disc" },   "seal": "seal/sealed" },
+    { "id": "D",    "order": 3,  "family": "sealed",   "frame": { "material": "bronze",    "base": "#5C4426", "trim": "#4A6A63", "accent": "#B08D3F", "ornament": 1, "runes": false, "glow": 0, "particles": 1, "gem": "disc" },   "seal": "seal/sealed" },
+    { "id": "B",    "order": 4,  "family": "awakened", "frame": { "material": "irongold",  "base": "#3A3D45", "trim": "#B08D3F", "accent": "#C0562D", "ornament": 2, "runes": true,  "glow": 1, "particles": 1, "gem": "bevel" },  "seal": "seal/awakened" },
+    { "id": "BB",   "order": 5,  "family": "awakened", "frame": { "material": "steelgold", "base": "#43464F", "trim": "#B08D3F", "accent": "#C0562D", "ornament": 2, "runes": true,  "glow": 1, "particles": 1, "gem": "bevel" },  "seal": "seal/awakened" },
+    { "id": "A",    "order": 6,  "family": "awakened", "frame": { "material": "blacksilver","base": "#2C2E38", "trim": "#8D93A6", "accent": "#7A5FA3", "ornament": 3, "runes": true,  "glow": 1, "particles": 1, "gem": "facet" },  "seal": "seal/awakened" },
+    { "id": "AA",   "order": 7,  "family": "awakened", "frame": { "material": "enamel",    "base": "#2C2E38", "trim": "#8D93A6", "accent": "#8A6FC0", "ornament": 4, "runes": true,  "glow": 2, "particles": 2, "gem": "facet" },  "seal": "seal/awakened" },
+    { "id": "AAA",  "order": 8,  "family": "awakened", "frame": { "material": "platinum",  "base": "#3A3D4A", "trim": "#B9BDCC", "accent": "#3F5FA3", "ornament": 5, "runes": true,  "glow": 2, "particles": 2, "gem": "facet" },  "seal": "seal/awakened" },
+    { "id": "S",    "order": 9,  "family": "ascended", "frame": { "material": "smokedglass","base": "#2A2D3A", "trim": "#C9D4E8", "accent": "#A9AEC1", "ornament": 5, "runes": true,  "glow": 2, "particles": 2, "gem": "facet" },  "seal": "seal/ascended" },
+    { "id": "SS",   "order": 10, "family": "ascended", "frame": { "material": "crystal",   "base": "#2E3242", "trim": "#DFE8F8", "accent": "#C9D4E8", "ornament": 5, "runes": true,  "glow": 3, "particles": 2, "gem": "facet" },  "seal": "seal/ascended" },
+    { "id": "SSS",  "order": 11, "family": "ascended", "frame": { "material": "corona",    "base": "#32364A", "trim": "#DFE8F8", "accent": "#C9D4E8", "ornament": 6, "runes": true,  "glow": 3, "particles": 3, "gem": "facet" },  "seal": "seal/ascended" },
+    { "id": "SSSR", "order": 12, "family": "ascended", "frame": { "material": "molten",    "base": "#1D1A24", "trim": "#8A7440", "accent": "#D4A03F", "ornament": 6, "runes": true,  "glow": 3, "particles": 3, "gem": "molten" }, "seal": "seal/ascended" },
+    { "id": "UR",   "order": 13, "family": "ultra",    "frame": { "material": "void",      "base": "#120F1A", "trim": "#3A2E58", "accent": "#5E3FA3", "ornament": 2, "runes": false, "glow": 3, "particles": 3, "gem": "pupil" },  "seal": "seal/ultra" },
+    { "id": "URR",  "order": 14, "family": "ultra",    "frame": { "material": "voidsilver","base": "#120F1A", "trim": "#8D93A6", "accent": "#A9AEC1", "ornament": 3, "runes": false, "glow": 3, "particles": 3, "gem": "pupil" },  "seal": "seal/ultra" },
+    { "id": "URRX", "order": 15, "family": "ultra",    "frame": { "material": "voidgold",  "base": "#120F1A", "trim": "#D4A03F", "accent": "#D4A03F", "ornament": 4, "runes": false, "glow": 3, "particles": 3, "gem": "pupil" },  "seal": "seal/ultra" },
+    { "id": "XG",   "order": 16, "family": "xg",       "frame": { "material": "eclipse",   "base": "#0B0A10", "trim": "#C9D4E8", "accent": "#C9D4E8", "ornament": 3, "runes": true,  "glow": 3, "particles": 3, "gem": "eclipse" }, "seal": "seal/xg" }
+  ]
+}

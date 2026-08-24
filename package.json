@@ -1,0 +1,12 @@
+{
+  "name": "eclipse-cronicas-del-ultimo-reino",
+  "version": "0.1.0",
+  "description": "ECLIPSE: Crónicas del Último Reino — TCG + RPG narrativo de fantasía oscura. PWA offline-first, Android, LAN Wi-Fi.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "node tools/dev-server.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
