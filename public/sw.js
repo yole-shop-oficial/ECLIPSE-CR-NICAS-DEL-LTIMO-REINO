@@ -2,7 +2,7 @@
 // Cachea el app shell y los assets en la instalación, y sirve todo
 // desde caché primero para que el juego funcione sin conexión.
 
-const CACHE_VERSION = 'seiryu-v1';
+const CACHE_VERSION = 'seiryu-v2';
 const CACHE_NAME = `seiryu-tactics-${CACHE_VERSION}`;
 
 const APP_SHELL = [
@@ -59,10 +59,17 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (!isAppOrigin(url)) return; // deja pasar fuentes externas (Google Fonts) a la red normal
 
-  // Navegación (recarga de página): cache-first con fallback al app shell.
+  // Navegación (carga/recarga de página): network-first para no atascar a los
+  // jugadores en una versión vieja del HTML; si no hay red, cae al app shell cacheado.
   if (req.mode === 'navigate') {
     event.respondWith(
-      caches.match('/index.html').then((cached) => cached || fetch(req).catch(() => caches.match('/index.html')))
+      fetch(req)
+        .then((res) => {
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put('/index.html', resClone));
+          return res;
+        })
+        .catch(() => caches.match('/index.html'))
     );
     return;
   }

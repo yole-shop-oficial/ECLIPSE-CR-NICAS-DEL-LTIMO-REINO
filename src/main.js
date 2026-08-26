@@ -8,13 +8,24 @@ import WorldScene from './scenes/WorldScene.js';
 import CardCollectionScene from './scenes/CardCollectionScene.js';
 
 // Registro del Service Worker para soporte offline-first y PWA instalable.
-if ('serviceWorker' in navigator) {
+// Solo en producción: en desarrollo el SW puede servir versiones cacheadas
+// obsoletas del index.html/assets y "congelar" cambios recién hechos.
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js').catch((err) => {
       console.warn('No se pudo registrar el Service Worker:', err);
     });
   });
+} else if ('serviceWorker' in navigator) {
+  // En desarrollo, aseguramos que no quede ningún SW viejo activo/controlando la página.
+  navigator.serviceWorker.getRegistrations().then((regs) => {
+    regs.forEach((reg) => reg.unregister());
+  });
+  if (window.caches) {
+    caches.keys().then((keys) => keys.forEach((key) => caches.delete(key)));
+  }
 }
+
 
 // Captura el evento de instalación para ofrecer un botón "Instalar app" en el menú.
 window.deferredInstallPrompt = null;
