@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { CARDS, RARITY_COLORS, RARITY_LABEL, ELEMENTS } from '../data/cards.js';
+import { onResizeRebuild } from '../ui/layout.js';
 
 export default class CardCollectionScene extends Phaser.Scene {
   constructor() {
@@ -57,6 +58,8 @@ export default class CardCollectionScene extends Phaser.Scene {
     });
 
     this.cameras.main.fadeIn(300, 0, 0, 0);
+
+    onResizeRebuild(this);
   }
 
   createCardThumb(card, x, y, size, owned) {

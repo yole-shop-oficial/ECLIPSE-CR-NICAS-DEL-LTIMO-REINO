@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { GAME_TITLE, GAME_SUBTITLE } from '../data/story.js';
+import { coverImage, onResizeRebuild } from '../ui/layout.js';
 
 export default class MainMenuScene extends Phaser.Scene {
   constructor() {
@@ -9,8 +10,8 @@ export default class MainMenuScene extends Phaser.Scene {
   create() {
     const { width, height } = this.scale;
 
-    const bg = this.add.image(width / 2, height / 2, 'menu_bg');
-    this.fitCover(bg, width, height);
+    const bg = this.add.image(0, 0, 'menu_bg');
+    coverImage(bg, width, height);
     this.applyKenBurns(bg);
 
     this.add.rectangle(width / 2, height / 2, width, height, 0x03040a, 0.35);
@@ -145,12 +146,7 @@ export default class MainMenuScene extends Phaser.Scene {
 
     this.cameras.main.fadeIn(500, 0, 0, 0);
 
-    this.scale.on('resize', this.handleResize, this);
-  }
-
-  fitCover(image, width, height) {
-    const scale = Math.max(width / image.width, height / image.height);
-    image.setScale(scale).setScrollFactor(0);
+    onResizeRebuild(this);
   }
 
   applyKenBurns(image) {
@@ -165,11 +161,4 @@ export default class MainMenuScene extends Phaser.Scene {
     });
   }
 
-  handleResize() {
-    this.scene.restart();
-  }
-
-  shutdown() {
-    this.scale.off('resize', this.handleResize, this);
-  }
 }

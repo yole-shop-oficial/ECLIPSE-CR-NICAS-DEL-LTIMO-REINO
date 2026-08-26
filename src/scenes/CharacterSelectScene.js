@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { coverImage, onResizeRebuild } from '../ui/layout.js';
 
 const HEROES = [
   {
@@ -26,11 +27,11 @@ export default class CharacterSelectScene extends Phaser.Scene {
     super('CharacterSelect');
   }
 
-  create() {
+  create(data) {
     const { width, height } = this.scale;
-    this.selected = 0;
+    this.selected = (data && data.selected) || 0;
 
-    this.add.image(width / 2, height / 2, 'title_bg').setDisplaySize(width, height);
+    coverImage(this.add.image(0, 0, 'title_bg'), width, height);
     this.add.rectangle(width / 2, height / 2, width, height, 0x03040a, 0.6);
 
     this.add
@@ -133,8 +134,10 @@ export default class CharacterSelectScene extends Phaser.Scene {
     this.confirmBtn.on('pointerover', () => this.confirmBtn.setFillStyle(0x18233d, 0.9));
     this.confirmBtn.on('pointerout', () => this.confirmBtn.setFillStyle(0x0d1424, 0.9));
 
-    this.select(0);
+    this.select(this.selected);
     this.cameras.main.fadeIn(500, 0, 0, 0);
+
+    onResizeRebuild(this, 180, { selected: this.selected });
   }
 
   select(i) {

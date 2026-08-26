@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
 import { CARDS } from '../data/cards.js';
 import { PROLOGUE_SLIDES } from '../data/story.js';
+import { ART } from '../data/assets.js';
+import { coverImage, onResize } from '../ui/layout.js';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -10,21 +12,19 @@ export default class BootScene extends Phaser.Scene {
   preload() {
     this.cameras.main.setBackgroundColor('#05070d');
 
-    // Fondo de pantalla de carga
-    this.load.image('loading_bg', '/assets/art/loading_bg.jpg');
-    this.load.image('title_bg', '/assets/art/title_bg.jpg');
-
+    // 'loading_bg' ya fue cargada por PreloadBootScene, así que podemos
+    // mostrar la interfaz de carga de inmediato sin texturas rotas.
     this.createLoadingUI();
 
-    // Fondos y arte principal
-    this.load.image('menu_bg', '/assets/art/menu_bg.jpg');
-    this.load.image('hero_male', '/assets/art/hero_male.png');
-    this.load.image('hero_female', '/assets/art/hero_female.png');
-    this.load.image('card_back', '/assets/art/card_back.png');
-    this.load.image('world_map', '/assets/art/world_map.jpg');
+    this.load.image('title_bg', ART.title_bg);
+    this.load.image('menu_bg', ART.menu_bg);
+    this.load.image('hero_male', ART.hero_male);
+    this.load.image('hero_female', ART.hero_female);
+    this.load.image('card_back', ART.card_back);
+    this.load.image('world_map', ART.world_map);
 
     PROLOGUE_SLIDES.forEach((slide) => {
-      this.load.image(slide.image, `/assets/art/${slide.image}.jpg`);
+      this.load.image(slide.image, ART[slide.image]);
     });
 
     // Generamos texturas proceduralmente para las cartas (ilustración simbólica por elemento)
@@ -33,9 +33,11 @@ export default class BootScene extends Phaser.Scene {
     });
   }
 
+
   createLoadingUI() {
     const { width, height } = this.scale;
-    this.add.image(width / 2, height / 2, 'loading_bg').setDisplaySize(width, height).setDepth(0);
+    const bg = this.add.image(0, 0, 'loading_bg').setDepth(0);
+    coverImage(bg, width, height);
     this.add.rectangle(width / 2, height / 2, width, height, 0x05070d, 0.45).setDepth(1);
 
     this.add

@@ -1,18 +1,19 @@
 import Phaser from 'phaser';
 import { PROLOGUE_SLIDES } from '../data/story.js';
+import { coverImage, onResizeRebuild } from '../ui/layout.js';
 
 export default class PrologueScene extends Phaser.Scene {
   constructor() {
     super('Prologue');
   }
 
-  create() {
+  create(data) {
     const { width, height } = this.scale;
-    this.index = 0;
+    this.index = data && data.startIndex ? data.startIndex : 0;
     this.cameras.main.fadeIn(600, 0, 0, 0);
 
-    this.bg = this.add.image(width / 2, height / 2, PROLOGUE_SLIDES[0].image);
-    this.fitCover(this.bg, width, height);
+    this.bg = this.add.image(0, 0, PROLOGUE_SLIDES[this.index].image);
+    coverImage(this.bg, width, height);
     this.bg.setAlpha(0);
     this.tweens.add({ targets: this.bg, alpha: 1, duration: 900 });
 
@@ -55,12 +56,9 @@ export default class PrologueScene extends Phaser.Scene {
       this.advance();
     });
 
-    this.typeCaption(PROLOGUE_SLIDES[0].caption);
-  }
+    this.typeCaption(PROLOGUE_SLIDES[this.index].caption);
 
-  fitCover(image, width, height) {
-    const scale = Math.max(width / image.width, height / image.height);
-    image.setScale(scale);
+    onResizeRebuild(this, 180, { startIndex: this.index });
   }
 
   typeCaption(text) {
@@ -85,8 +83,8 @@ export default class PrologueScene extends Phaser.Scene {
     }
     const slide = PROLOGUE_SLIDES[this.index];
     const { width, height } = this.scale;
-    const newBg = this.add.image(width / 2, height / 2, slide.image).setAlpha(0);
-    this.fitCover(newBg, width, height);
+    const newBg = this.add.image(0, 0, slide.image).setAlpha(0);
+    coverImage(newBg, width, height);
     this.overlay.setDepth(1);
     this.caption.setDepth(2);
     this.skipBtn.setDepth(3);

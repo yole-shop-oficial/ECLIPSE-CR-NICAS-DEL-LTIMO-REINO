@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { CARDS, RARITY_COLORS } from '../data/cards.js';
+import { coverImage, onResizeRebuild } from '../ui/layout.js';
 
 const POIS = [
   { id: 'aurelia', name: 'Ruinas de Aurelia', x: 0.28, y: 0.32, kind: 'ruinas', desc: 'La antigua capital caída, ahora hogar de espíritus errantes.' },
@@ -27,9 +28,9 @@ export default class WorldScene extends Phaser.Scene {
       localStorage.setItem('seiryu_cards', JSON.stringify(starter));
     }
 
-    const map = this.add.image(width / 2, height / 2, 'world_map');
-    const scale = Math.max(width / map.width, height / map.height) * 1.15;
-    map.setScale(scale);
+    const map = this.add.image(0, 0, 'world_map');
+    coverImage(map, width, height);
+    map.setScale(map.scaleX * 1.15, map.scaleY * 1.15);
     this.mapImage = map;
 
     this.add.rectangle(width / 2, height / 2, width, height, 0x03060f, 0.15);
@@ -44,7 +45,7 @@ export default class WorldScene extends Phaser.Scene {
     // Barra inferior de accesos
     this.createBottomBar(width, height);
 
-    this.scale.on('resize', () => this.scene.restart());
+    onResizeRebuild(this);
   }
 
   createPOI(poi, width, height) {
@@ -164,7 +165,8 @@ export default class WorldScene extends Phaser.Scene {
     const cardW = Math.min(240, width * 0.6);
     const cardH = cardW * 1.4;
 
-    const cardBack = this.add.image(width / 2, height / 2, 'card_back').setDisplaySize(cardW, cardH).setDepth(31);
+    const cardBack = this.add.image(width / 2, height / 2, 'card_back').setDepth(31);
+    cardBack.setScale(Math.min(cardW / cardBack.width, cardH / cardBack.height));
 
     this.tweens.add({
       targets: cardBack,
@@ -282,7 +284,13 @@ export default class WorldScene extends Phaser.Scene {
 
     const buttons = [
       { label: 'Mundo', action: () => {} },
-      { label: 'Cartas', action: () => this.scene.launch('CardCollection').scene.bringToTop('CardCollection') },
+      {
+        label: 'Cartas',
+        action: () => {
+          this.scene.launch('CardCollection');
+          this.scene.bringToTop('CardCollection');
+        },
+      },
       { label: 'Menú', action: () => this.scene.start('MainMenu') },
     ];
 
